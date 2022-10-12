@@ -1,10 +1,13 @@
 import 'dotenv/config'
-import express from 'express';
+import app from './app'
+//import express from 'express';
+import App from './app'
 
-const PORT= process.env.APP_PORT || 3000;
+//const PORT= process.env.APP_PORT || 3000;
+//const app = express();
 
-const app = express();
+//app.listen(PORT, ()=> {
+//    console.log(`server working in port ${PORT}`)
+//})
 
-app.listen(PORT, ()=> {
-    console.log(`server working in port ${PORT}`)
-})
+App.listen(process.env.APP_PORT as unknown as number || 3000)
