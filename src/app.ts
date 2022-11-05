@@ -1,4 +1,5 @@
-import express from 'express'
+import express, {json, Request, Response} from 'express'
+import categoriesController from './controllers/categories.controller';
 import Connection from './database/connection';
 
 
@@ -8,7 +9,17 @@ class App{
 
     constructor(){
         this.express = express();
+        this.middlewares()
         this.db()
+        this.routes()
+    }
+
+    middlewares(){
+        this.express.use(json())
+    }
+
+    routes(){
+        this.express.use('/api', categoriesController.router)
     }
 
     db(){
